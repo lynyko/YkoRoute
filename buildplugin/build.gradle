@@ -1,0 +1,36 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+    }
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
+
+dependencies {
+    compile gradleApi()
+    compile 'com.android.tools.build:gradle:2.3.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+//设置maven deployer
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            //设置插件的GAV参数
+            pom.groupId = 'com.yko.router'
+            //pom.artifactId = 'cooker-plugin'
+            pom.version = 1.0
+            //文件发布到下面目录
+            repository(url: uri('D:/release'))
+        }
+    }
+}

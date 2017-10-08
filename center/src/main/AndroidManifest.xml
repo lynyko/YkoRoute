@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+
+    package="wangmo.doutry.com.model1">
+
+    <application>
+        <activity android:name=".CenterActivityJava"/>
+        <activity android:name=".CenterActivityKotlin"/>
+    </application>
+
+</manifest>

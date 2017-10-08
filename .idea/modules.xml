@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/RouteTest.iml" filepath="$PROJECT_DIR$/RouteTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bbs/bbs.iml" filepath="$PROJECT_DIR$/bbs/bbs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/center/center.iml" filepath="$PROJECT_DIR$/center/center.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hutlib/hutlib.iml" filepath="$PROJECT_DIR$/hutlib/hutlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall/mall.iml" filepath="$PROJECT_DIR$/mall/mall.iml" />
+      <module fileurl="file://$PROJECT_DIR$/processlib/processlib.iml" filepath="$PROJECT_DIR$/processlib/processlib.iml" />
+    </modules>
+  </component>
+</project>
