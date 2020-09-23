@@ -44,11 +44,12 @@ public class YkoProcess extends AbstractProcessor {
     private Messager messager = null;
     private Elements elementUtils = null;
     private Types types;
-    private int moduleIndex = 1;
     public static final String ACTIVITY = "android.app.Activity";
+    public static final String ACTIVITY_V7 = "android.support.v7.app.AppCompatActivity";
     public static final String FRAGMENT = "android.app.Fragment";
     public static final String FRAGMENT_V4 = "android.support.v4.app.Fragment";
     public static final String SERVICE = "android.app.Service";
+    public static final String CONTROLLER = "com.yko.route.Controller";
 
     @Override
     public Set<String> getSupportedAnnotationTypes() {
@@ -84,29 +85,29 @@ public class YkoProcess extends AbstractProcessor {
                 .addModifiers(Modifier.PUBLIC)
                 .addParameter(mapParameterSpec);
 
-        String name = null;
-        TypeMirror type_Activity = elementUtils.getTypeElement(ACTIVITY).asType();
-        TypeMirror type_Service = elementUtils.getTypeElement(SERVICE).asType();
-        TypeMirror fragmentTm = elementUtils.getTypeElement(FRAGMENT).asType();
-        TypeMirror fragmentTmV4 = elementUtils.getTypeElement(FRAGMENT_V4).asType();
+        TypeMirror typeActivity = elementUtils.getTypeElement(ACTIVITY).asType();
+        TypeMirror typeActivityV7 = elementUtils.getTypeElement(ACTIVITY_V7).asType();
+        TypeMirror typeService = elementUtils.getTypeElement(SERVICE).asType();
+        TypeMirror typeFragment = elementUtils.getTypeElement(FRAGMENT).asType();
+        TypeMirror typeFragmentV4 = elementUtils.getTypeElement(FRAGMENT_V4).asType();
+        TypeMirror typeController = elementUtils.getTypeElement(CONTROLLER).asType();
 
         for(Element element : elements){
 
             TypeMirror tm = element.asType();
-            if (types.isSubtype(tm, type_Activity) ||
-                    types.isSubtype(tm, type_Service) ||
-                    types.isSubtype(tm, fragmentTm) ||
-                    types.isSubtype(tm, fragmentTmV4)) {
+            if (types.isSubtype(tm, typeActivity) ||
+                    types.isSubtype(tm, typeActivityV7) ||
+                    types.isSubtype(tm, typeService) ||
+                    types.isSubtype(tm, typeController) ||
+                    types.isSubtype(tm, typeFragment) ||
+                    types.isSubtype(tm, typeFragmentV4)) {
                 typeElements.add((TypeElement) element);
                 YkoRoute route = element.getAnnotation(YkoRoute.class);
                 String path = route.path();
-                log(null, ((TypeElement) element).getQualifiedName().toString());
                 String className = ((TypeElement) element).getQualifiedName().toString();
-                log(null, className.substring(0, className.lastIndexOf(".")));
-                log(null, className.substring(className.lastIndexOf(".") + 1));
-                methodHandle.addStatement("map.put($S, $T.class)", path, ClassName.get(className.substring(0, className.lastIndexOf(".")),
-                        className.substring(className.lastIndexOf(".") + 1)));
-                log(null, "add success");
+                methodHandle.addStatement("map.put($S, $T.class)",
+                        path,
+                        ClassName.get(className.substring(0, className.lastIndexOf(".")), className.substring(className.lastIndexOf(".") + 1)));
             }
         }
         String fullName = IRoute.class.getName();

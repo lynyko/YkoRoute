@@ -69,7 +69,7 @@ public class YkoHut {
         return  classNameList;
     }
 
-    public static Class getActivityClass(String path){
+    public static Class getClass(String path){
         Class cls = map.get(path);
         if(cls == null){
             return null;

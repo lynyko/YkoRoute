@@ -3,6 +3,8 @@ package wangmo.doutry.com.model2;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.TextView;
 
 import com.yko.route.YkoRoute;
 
@@ -15,5 +17,6 @@ public class MallJava extends Activity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mall_java);
+        View view = new TextView(this);
     }
 }
