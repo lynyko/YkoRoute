@@ -1,2 +1,2 @@
 //include ':app', ':buildplugin'
-include ':app', ':processlib', ':center', ':mall', ':hutlib', ':bbs'
+include ':app', ':compiler', ':center', ':mall', ':hutlib', ':bbs'

@@ -6,12 +6,12 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 
-import com.yko.route.YkoRoute;
+import com.yko.route.Route;
 
 /**
  * Created by yko on 2017/9/21.
  */
-@YkoRoute(path = "/mall/mallJava")
+@Route(path = "/mall/mallJava")
 public class MallJava extends Activity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

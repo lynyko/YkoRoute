@@ -53,7 +53,7 @@ public class YkoProcess extends AbstractProcessor {
 
     @Override
     public Set<String> getSupportedAnnotationTypes() {
-        return Collections.singleton(YkoRoute.class.getCanonicalName());
+        return Collections.singleton(Route.class.getCanonicalName());
     }
 
     @Override
@@ -70,7 +70,7 @@ public class YkoProcess extends AbstractProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
-        Set<? extends Element> elements = roundEnvironment.getElementsAnnotatedWith(YkoRoute.class);
+        Set<? extends Element> elements = roundEnvironment.getElementsAnnotatedWith(Route.class);
         if (elements == null || elements.isEmpty()) {
             return true;
         }
@@ -102,7 +102,7 @@ public class YkoProcess extends AbstractProcessor {
                     types.isSubtype(tm, typeFragment) ||
                     types.isSubtype(tm, typeFragmentV4)) {
                 typeElements.add((TypeElement) element);
-                YkoRoute route = element.getAnnotation(YkoRoute.class);
+                Route route = element.getAnnotation(Route.class);
                 String path = route.path();
                 String className = ((TypeElement) element).getQualifiedName().toString();
                 methodHandle.addStatement("map.put($S, $T.class)",

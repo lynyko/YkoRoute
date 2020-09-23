@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.yko.route.YkoRoute
+import com.yko.route.Route
 
-@YkoRoute(path = "/mall/fragment")
+@Route(path = "/mall/fragment")
 class MallFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = TextView(activity)

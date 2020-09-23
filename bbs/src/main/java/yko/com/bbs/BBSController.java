@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 
 import com.yko.route.Controller;
-import com.yko.route.YkoRoute;
+import com.yko.route.Route;
 
 import java.util.Map;
 
-@YkoRoute(path = "/bbs/controller")
+@Route(path = "/bbs/controller")
 public class BBSController implements Controller {
 
     @Override

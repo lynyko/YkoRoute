@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 26
     buildToolsVersion "26.0.0"
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
 
@@ -28,5 +28,5 @@ dependencies {
     })
     api 'com.android.support:appcompat-v7:25.3.1'
     testImplementation 'junit:junit:4.12'
-    implementation project(':processlib')
+    implementation project(':compiler')
 }

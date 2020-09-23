@@ -41,6 +41,6 @@ dependencies {
     })
     implementation 'com.android.support:appcompat-v7:25.3.1'
     testImplementation 'junit:junit:4.12'
-    implementation project(':processlib')
-    kapt project(':processlib')
+    implementation project(':compiler')
+    kapt project(':compiler')
 }

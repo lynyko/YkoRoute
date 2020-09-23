@@ -4,12 +4,12 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.yko.route.YkoRoute;
+import com.yko.route.Route;
 
 /**
  * Created by yko on 2017/9/29.
  */
-@YkoRoute(path = "/BBS/BBSJava")
+@Route(path = "/BBS/BBSJava")
 public class BBSJava extends Activity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

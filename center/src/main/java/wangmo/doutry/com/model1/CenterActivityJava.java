@@ -4,12 +4,12 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.yko.route.YkoRoute;
+import com.yko.route.Route;
 
 /**
  * Created by yko on 2017/9/22.
  */
-@YkoRoute(path="/center/centerJava")
+@Route(path="/center/centerJava")
 public class CenterActivityJava extends Activity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

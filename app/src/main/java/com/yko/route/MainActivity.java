@@ -14,65 +14,37 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        YkoHut.init(this);
+        YkoHut.getInstance().init(this);
 
         findViewById(R.id.button).setOnClickListener(onClickListener);
         findViewById(R.id.button3).setOnClickListener(onClickListener);
         findViewById(R.id.button5).setOnClickListener(onClickListener);
         findViewById(R.id.button4).setOnClickListener(onClickListener);
         findViewById(R.id.button6).setOnClickListener(onClickListener);
-        Class cls = YkoHut.getClass("/mall/fragment");
-        if(Fragment.class.isAssignableFrom(cls)){
-            try {
-                Fragment fragment = (Fragment)cls.newInstance();
-                getFragmentManager().beginTransaction().replace(R.id.flContainer, fragment).commit();
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
+        Fragment fragment = YkoHut.getInstance().getFragment("/mall/fragment");
+        if(fragment != null){
+            getFragmentManager().beginTransaction().replace(R.id.flContainer, fragment).commit();
         }
-
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent;
-            Class cls;
             switch(v.getId()){
                 case R.id.button:
-                    cls = YkoHut.getClass("/BBS/BBSJava");
-                    intent = new Intent(MainActivity.this, cls);
-                    startActivity(intent);
+                    YkoHut.getInstance().startActivity(MainActivity.this, "/BBS/BBSJava", null);
                     break;
                 case R.id.button3:
-                    cls = YkoHut.getClass("/mall/mallJava");
-                    intent = new Intent(MainActivity.this, cls);
-                    startActivity(intent);
+                    YkoHut.getInstance().startActivity(MainActivity.this, "/mall/mallJava", null);
                     break;
                 case R.id.button5:
-                    cls = YkoHut.getClass("/center/centerJava");
-                    intent = new Intent(MainActivity.this, cls);
-                    startActivity(intent);
+                    YkoHut.getInstance().startActivity(MainActivity.this, "/center/centerJava", null);
                     break;
                 case R.id.button4:
-                    cls = YkoHut.getClass("/mall/mallkotlin");
-                    intent = new Intent(MainActivity.this, cls);
-                    startActivity(intent);
+                    YkoHut.getInstance().startActivity(MainActivity.this, "/mall/mallkotlin", null);
                     break;
                 case R.id.button6:
-                    cls = YkoHut.getClass("/bbs/controller");
-                    if(Controller.class.isAssignableFrom(cls)){
-                        try {
-                            Controller controller = (Controller)cls.newInstance();
-                            controller.start(MainActivity.this, null, null);
-                        } catch (InstantiationException e) {
-                            e.printStackTrace();
-                        } catch (IllegalAccessException e) {
-                            e.printStackTrace();
-                        }
-                    }
+                    YkoHut.getInstance().startController(MainActivity.this, "/bbs/controller", null, null);
                     break;
             }
         }
