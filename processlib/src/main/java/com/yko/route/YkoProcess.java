@@ -74,10 +74,10 @@ public class YkoProcess extends AbstractProcessor {
             return true;
         }
         String moduleName = processingEnv.getOptions().get("moduleName");
-
+        log(null, "module name:" + moduleName);
         Set<TypeElement> typeElements = new HashSet<>();
         ParameterizedTypeName mapTypeName = ParameterizedTypeName.get(ClassName.get(Map.class),
-                ClassName.get(String.class), ClassName.get(String.class));
+                ClassName.get(String.class), ClassName.get(Class.class));
         ParameterSpec mapParameterSpec = ParameterSpec.builder(mapTypeName, "map").build();
 
         MethodSpec.Builder methodHandle = MethodSpec.methodBuilder("routeMap")
@@ -100,7 +100,13 @@ public class YkoProcess extends AbstractProcessor {
                 typeElements.add((TypeElement) element);
                 YkoRoute route = element.getAnnotation(YkoRoute.class);
                 String path = route.path();
-                methodHandle.addStatement("map.put($S, $S)", path, ((TypeElement) element).getQualifiedName().toString());
+                log(null, ((TypeElement) element).getQualifiedName().toString());
+                String className = ((TypeElement) element).getQualifiedName().toString();
+                log(null, className.substring(0, className.lastIndexOf(".")));
+                log(null, className.substring(className.lastIndexOf(".") + 1));
+                methodHandle.addStatement("map.put($S, $T.class)", path, ClassName.get(className.substring(0, className.lastIndexOf(".")),
+                        className.substring(className.lastIndexOf(".") + 1)));
+                log(null, "add success");
             }
         }
         String fullName = IRoute.class.getName();

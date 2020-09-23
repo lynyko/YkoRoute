@@ -3,10 +3,8 @@ package com.yko.route;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 
-import com.yko.route.hutlib.YkoHut;
 import com.yko.yko.routetest.R;
 
 public class MainActivity extends Activity {
@@ -21,7 +19,7 @@ public class MainActivity extends Activity {
         findViewById(R.id.button3).setOnClickListener(onClickListener);
         findViewById(R.id.button5).setOnClickListener(onClickListener);
         findViewById(R.id.button4).setOnClickListener(onClickListener);
-        getFragmentManager().beginTransaction().replace(R.id.flContainer, YkoHut.getFragment("/mall/mallkotlin")).commit();
+//        getFragmentManager().beginTransaction().replace(R.id.flContainer, YkoHut.getFragment("/mall/mallkotlin")).commit();
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {

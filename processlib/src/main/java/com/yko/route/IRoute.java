@@ -7,5 +7,5 @@ import java.util.Map;
  */
 
 public interface IRoute {
-    void routeMap(Map<String, String> map);
+    void routeMap(Map<String, Class> map);
 }

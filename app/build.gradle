@@ -13,6 +13,10 @@ android {
     }
     buildTypes {
         release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -20,6 +24,13 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
     }
 }
 
@@ -38,8 +49,8 @@ dependencies {
     if (rootProject.ext.models.bbs) {
         compile project(':bbs')
     }
-    if (rootProject.ext.models.mall) {
-        compile project(':mall')
-    }
+//    if (rootProject.ext.models.mall) {
+//        compile project(':mall')
+//    }
 }
 
